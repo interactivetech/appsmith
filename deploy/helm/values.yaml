@@ -47,7 +47,7 @@ mongodb:
 
 ## postgresql parameters
 postgresql:
-  enabled: true
+  enabled: false
   auth:
     username: root
     password: password
@@ -436,7 +436,13 @@ applicationConfig:
   APPSMITH_CUSTOM_DOMAIN: ""
   APPSMITH_DISABLE_IFRAME_WIDGET_SANDBOX: "false"
   APPSMITH_LICENSE_KEY: ""
-  APPSMITH_KEYCLOAK_DB_DRIVER: ""
-  APPSMITH_KEYCLOAK_DB_USERNAME: ""
-  APPSMITH_KEYCLOAK_DB_PASSWORD: ""
-  APPSMITH_KEYCLOAK_DB_URL: ""
+  APPSMITH_KEYCLOAK_DB_DRIVER: "postgresql"
+  APPSMITH_KEYCLOAK_DB_USERNAME: "postgres"
+  APPSMITH_KEYCLOAK_DB_PASSWORD: "<CHANGE_ME>"
+  APPSMITH_KEYCLOAK_DB_URL: "postgresql.postgresql.svc.cluster.local"
+
+ezua:
+  enabled: true
+  virtualService:
+    endpoint: "appsmith.${DOMAIN_NAME}"
+    istioGateway: "istio-system/ezaf-gateway"
